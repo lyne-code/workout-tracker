@@ -7,10 +7,10 @@ app.use (express.urlencoded({extended:true}))
 app.use (express.json())
 app.use (require("./routes/hmtl-routes"))
 app.use (require("./routes/api-routes"))
-mongoose.connect("mongodb://localhost/workout", {
+mongoose.connect( process.env.MONGODB_URI ||   "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
-});
+})
 
 app.listen(PORT, function(){
     console.log("app.listen port", PORT)
